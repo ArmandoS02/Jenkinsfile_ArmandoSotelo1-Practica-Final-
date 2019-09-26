@@ -21,7 +21,7 @@ pipeline{
         }
         stage("Comprimir el backup"){
             steps{
-                powershell "compact /c /s C:\\Backup.History\\Backup_\$(get-date -f MM-dd-yyyy_HH_mm)\\"
+                powershell "compact /c /s C:\\Backup.History\\Backup_\$(get-date -f MM-dd-yyyy_HH_mm)"
             }
         }
     }
