@@ -19,5 +19,10 @@ pipeline{
                powershell "xcopy C:\\Users\\Academia\\Documents\\Practicas.Armando C:\\Backup.History\\Backup_Jenkins_Jobs_\$(get-date -f MM-dd-yyyy_HH_mm)\\" 
             }
         }
+        stage("Comprimir el backup"){
+            steps{
+                powershell "compact /c /s C:\\Backup.History\\Backup_\$(get-date -f MM-dd-yyyy_HH_mm)\\"
+            }
+        }
     }
 }
