@@ -16,7 +16,7 @@ pipeline{
         stage("Hacer la copia"){
             steps{
                 echo "En este stage hago un backup de mis jobs de Jenkins"
-               powershell "xcopy C:\\Program Files\\Junkins\\Home\\jobs\\ C:\\Backup.History\\Backup_Jenkins_Jobs_\$(get-date -f MM-dd-yyyy_HH_mm)\\  EXCLUDE:Practica 10" 
+               powershell "xcopy C:\\Program Files\\Junkins\\Home\\jobs\\ C:\\Backup.History\\Backup_Jenkins_Jobs_\$(get-date -f MM-dd-yyyy_HH_mm)\\  /EXCLUDE: //Practica 10" 
             }
         }
     }
