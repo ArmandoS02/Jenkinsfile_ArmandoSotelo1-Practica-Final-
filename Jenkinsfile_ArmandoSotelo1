@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage("Moverte al folder"){
+            steps{
+                powershell "cd C:\\Backup.History"
+            }
+        }
+        stage("Crear el directorio"){
+            steps{
+                powershell "mkdir Backup_\$(get-date -f MM-dd-yyyy_HH_mm)"
+            }
+        }
+        stage("Hacer la copia"){
+            steps{
+               powershell "xcopy C:\\Para.Backup C:\\Backup.History\\Backup_\$(get-date -f MM-dd-yyyy_HH_mm)\\" 
+            }
+        }
+    }
+}
