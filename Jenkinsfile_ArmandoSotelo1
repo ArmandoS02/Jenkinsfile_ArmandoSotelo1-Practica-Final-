@@ -1,19 +1,22 @@
 pipeline{
     agent any
     stages{
-        stage("Moverte al folder"){
+        stage("Moverte al directorio"){
             steps{
+                echo "En este stage me muevo a la carpeta de backups"
                 powershell "cd C:\\Backup.History"
             }
         }
         stage("Crear el directorio"){
             steps{
-                powershell "mkdir Backup_\$(get-date -f MM-dd-yyyy_HH_mm)"
+                echo "En este stage creo el directorio con la fecha y hora"
+                powershell "mkdir Backup_Jenkins_Jobs_\$(get-date -f MM-dd-yyyy_HH_mm)"
             }
         }
         stage("Hacer la copia"){
             steps{
-               powershell "xcopy C:\\Para.Backup C:\\Backup.History\\Backup_\$(get-date -f MM-dd-yyyy_HH_mm)\\" 
+                echo "En este stage hago un backup de mis jobs de Jenkins"
+               powershell "xcopy C:\\Program Files\\Junkins\\Home\\jobs C:\\Backup.History\\Backup_Jenkins_Jobs_\$(get-date -f MM-dd-yyyy_HH_mm)\\" 
             }
         }
     }
