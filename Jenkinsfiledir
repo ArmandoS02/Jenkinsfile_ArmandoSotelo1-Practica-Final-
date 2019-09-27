@@ -1,1 +1,1 @@
-dir
+powershell "dir"
